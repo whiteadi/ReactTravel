@@ -1,0 +1,356 @@
+{
+  "DISCOUNT": {
+    "DISCOUNT_ID": {
+      "TYPE": "INTEGER",
+      "PK": "Y"
+    },
+    "PERCENTAGE": {
+      "TYPE": "INTEGER",
+      "PK": "N"
+    },
+    "MIN_PART": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "MAX_PART": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    }
+  },
+  "GUIDE": {
+    "PERSON_ID": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "EXPERIENCE": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "DB_USER": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    }
+  },
+  "PERSON": {
+    "PERSON_ID": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "FIRST_NAME": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "FAMILY_NAME": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "ADDRESS": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "CITY": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "COUNTRY": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "AREA_CODE": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "EMAIL": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "BANK_ACCOUNT": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "BIRTH_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "GENDER": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "DISCOUNT": {
+      "TYPE": "INTEGER",
+      "PK": "N"
+    },
+    "GUIDE": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "STAFF": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    }
+  },
+  "RESERVATION": {
+    "RES_ID": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "TOUR_ID": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "MADE_BY": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "DEALT_WITH_BY": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "PERSON_DISCOUNT": {
+      "TYPE": "INTEGER",
+      "PK": "N"
+    },
+    "GROUP_DISCOUNT": {
+      "TYPE": "INTEGER",
+      "PK": "N"
+    },
+    "PRICE": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "BOOK_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "CANCEL_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "DESTINATION": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "FAMILY_NAME": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "RETURN_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "START_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "TOUR_TYPE": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    }
+  },
+  "STAFF": {
+    "PERSON_ID": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "HIRE_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "COACHED_BY": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    }
+  },
+  "TABLE_SEQUENCE_NUMBERS": {
+    "TABLE_NAME": {
+      "TYPE": "VARCHAR2",
+      "PK": "Y"
+    },
+    "SEQNO": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    }
+  },
+  "TOUR": {
+    "TOUR_ID": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "DESTINATION": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "TOUR_TYPE": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "START_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "RETURN_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "PLAN_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "PRICE": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "MAX_PART": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "GUIDE": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    }
+  },
+  "TOUR_PROGRAMME": {
+    "DESTINATION": {
+      "TYPE": "VARCHAR2",
+      "PK": "Y"
+    },
+    "TOUR_TYPE": {
+      "TYPE": "VARCHAR2",
+      "PK": "Y"
+    },
+    "NUM_DAYS": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "MAX_AGE": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "DESCRIPTION": {
+      "TYPE": "CLOB",
+      "PK": "N"
+    }
+  },
+  "TRAVELLER": {
+    "RES_ID": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "PERSON_ID": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "INSURANCE": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "DIET": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "WITHDRAWAL_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "NAME": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    }
+  },
+  "T_APP_TIME": {
+    "APP_YEAR": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "APP_MONTH": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "APP_DAY": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "APP_HOUR": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "APP_MINUTE": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "APP_SECOND": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "APP_WEEKDAY": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    }
+  },
+  "T_EVENT": {
+    "EVENT": {
+      "TYPE": "VARCHAR2",
+      "PK": "Y"
+    },
+    "SESSION_ID": {
+      "TYPE": "VARCHAR2",
+      "PK": "Y"
+    }
+  },
+  "V_BOOKING_SPACE": {
+    "TOUR_ID": {
+      "TYPE": "NUMBER",
+      "PK": "Y"
+    },
+    "DESTINATION": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "TOUR_TYPE": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "START_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "RETURN_DATE": {
+      "TYPE": "DATETIME",
+      "PK": "N"
+    },
+    "MAX_PART": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "BOOKED": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "FREE": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    },
+    "RES_SPACE": {
+      "TYPE": "NUMBER",
+      "PK": "N"
+    }
+  },
+  "XSL": {
+    "NAME": {
+      "TYPE": "VARCHAR2",
+      "PK": "Y"
+    },
+    "REPOSITORY_VERSION": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    },
+    "XSL": {
+      "TYPE": "CLOB",
+      "PK": "N"
+    },
+    "DESCRIPTION": {
+      "TYPE": "VARCHAR2",
+      "PK": "N"
+    }
+  }
+}

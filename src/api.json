@@ -1,0 +1,163 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the demo Travel app swagger wrapper. See more about Swagger at [http://swagger.io](http://swagger.io)",
+    "version": "1.0.0",
+    "title": "Swagger Travel"
+  },
+  "host": "172.30.61.94:8090",
+  "basePath": "/Travel",
+  "tags": [
+    {
+      "name": "programm",
+      "description": "All tour programms"
+    },
+    {
+      "name": "tour",
+      "description": "Existing tour"
+    }
+  ],
+  "schemes": ["http"],
+  "paths": {
+    "/programms": {
+      "get": {
+        "tags": ["[programm]"],
+        "summary": "Finds all tour programms",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "operationId": "getTourProgramms",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Programm"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/toursbydestination/{destination}": {
+      "get": {
+        "tags": ["tour"],
+        "summary": "Finds Tours by destination",
+        "description": "A destination is provided to fetch tours for it.",
+        "operationId": "getToursByDestination",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "destination",
+            "in": "path",
+            "description": "Destination to search by",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Tour"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Programm": {
+      "type": "object",
+      "properties": {
+        "DESTINATION": {
+          "type": "string",
+          "example": "EUROPE"
+        },
+        "TOUR_TYPE": {
+          "type": "string",
+          "example": "GRAND TOU"
+        },
+        "NUM_DAYS": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "DESCRIPTION": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Programm"
+      }
+    },
+    "Tour": {
+      "type": "object",
+      "properties": {
+        "TOUR_ID": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "DESTINATION": {
+          "type": "string",
+          "example": "EUROPE"
+        },
+        "TOUR_TYPE": {
+          "type": "string"
+        },
+        "START_DATE": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "RETURN_DATE": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PLAN_DATE": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "PRICE": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "MAX_PART": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "GUIDE": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "xml": {
+        "name": "Tour"
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

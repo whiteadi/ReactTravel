@@ -1,0 +1,34 @@
+#title {
+  text-align: center;
+  font-family: arial, sans-serif;
+}
+
+#tours {
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  width: 100%;
+}
+
+#tours td,
+#tours th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tours tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#tours tr:hover {
+  background-color: #ddd;
+}
+
+#tours th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4caf50;
+  color: white;
+}
