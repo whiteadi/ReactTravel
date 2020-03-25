@@ -1,5 +1,26 @@
 ## USoft React client ##
 
+`pubic\react.xsl`
+
+ is used to generate the
+
+ `public\api.json`
+
+   select uscsxsl.apply2file
+  (
+  
+         '<root/>',
+  
+         'c:\xmltest\react.xsl',
+
+         'c:\temp\api.js',
+  
+         'tables', usmeta.tables('.*')
+  
+  )
+
+`api.json` is used for reading meta data about tables...
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
