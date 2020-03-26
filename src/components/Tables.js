@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ContentEditable from "react-contenteditable";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-import useForceUpdate from "use-force-update";
 import _ from "lodash";
 
 import "./Tables.css";
@@ -41,10 +40,9 @@ const highlightAll = () => {
   }, 0);
 };
 
-const Tables = ({ tableName, columns, pks }) => {
+const Tables = ({ tableName, columns, pks, updateMe, random }) => {
   const { data, loading, error } = useTables(tableName);
   const [newRow, setNewRow] = useState([]);
-  const forceUpdate = useForceUpdate();
 
   const columnNames = columns.map(col => Object.keys(col)[0]);
 
@@ -57,7 +55,7 @@ const Tables = ({ tableName, columns, pks }) => {
           label: "Yes",
           onClick: () =>
             deleteRow(tableName, pkValues).then(status => {
-              if (status) forceUpdate();
+              if (status) updateMe(Math.random());
             })
         },
         {
@@ -92,7 +90,7 @@ const Tables = ({ tableName, columns, pks }) => {
     } = event;
 
     updateRow(row, column, value, tableName).then(status => {
-      if (!status) forceUpdate();
+      if (!status) updateMe(Math.random());
     });
   };
 
@@ -240,6 +238,7 @@ const Tables = ({ tableName, columns, pks }) => {
           typeof data !== undefined &&
           Object.keys(data).length !== 0 && <tbody>{renderAdd()}</tbody>}
       </table>
+      <p hidden>{random}</p>
     </div>
   );
 };
