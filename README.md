@@ -4,7 +4,7 @@
 
  is used to generate the
 
- `public\api.json`
+ `src\tables.json`
 
    select uscsxsl.apply2file
   (
