@@ -29,7 +29,6 @@ const DynamicTables = () => {
   const [tableName, setTableName] = useState(null);
   const [tableColumns, setTableColumns] = useState([]);
   const [tablePK, setTablePK] = useState(null);
-  const [update, setUpdate] = useState(Math.random());
 
   const change = event => {
     if (event.target.value) {
@@ -50,13 +49,7 @@ const DynamicTables = () => {
         </select>
       )}
       {tableName && tableColumns && (
-        <Tables
-          tableName={tableName}
-          columns={tableColumns}
-          pks={tablePK}
-          updateMe={setUpdate}
-          random={update}
-        />
+        <Tables tableName={tableName} columns={tableColumns} pks={tablePK} />
       )}
     </>
   );

@@ -3,7 +3,8 @@ import React, {
   useContext,
   useEffect,
   useState,
-  useMemo
+  useMemo,
+  useCallback
 } from "react";
 import { API_URL, API_USERNAME, API_PASSWORD } from "./constants";
 
@@ -92,82 +93,8 @@ export const useTables = tableName => {
   const [data, setTableData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
-      try {
-        const urlString = `${API_URL}Tables/travel/${tableName}`;
-        const url = new URL(urlString);
-        headers.set("Accept", "application/json");
-        let response = await fetch(url, {
-          method: "GET",
-          headers: headers
-        });
-        let data = await safeParseJSON(response);
-        setTableData(data[tableName]);
-      } catch (error) {
-        setIsError(true);
-      }
-      setIsLoading(false);
-    };
-    fetchData();
-  }, [tableName]);
 
-  return { data, isLoading, isError };
-};
-
-export const deleteRow = async (tableName, pks) => {
-  const deleteData = async () => {
-    try {
-      const urlString = `${API_URL}Tables/travel/${tableName}${pks}`;
-      const url = new URL(urlString);
-      let response = await fetch(url, {
-        method: "DELETE",
-        headers: headers
-      });
-      if (response.status === 409) {
-        const body = await response.text();
-        alert(body);
-        return false;
-      }
-      return true;
-    } catch (error) {
-      alert(error);
-      return false;
-    }
-  };
-  return deleteData();
-};
-
-export const updateRow = async (pks, column, value, tableName) => {
-  const updateData = async () => {
-    try {
-      const urlString = `${API_URL}Tables/travel/${tableName}${pks}`;
-      const url = new URL(urlString);
-      const update = `<${tableName} ${column}="${value}"/>`;
-      headers.set("Content-Type", "text/xml");
-      let response = await fetch(url, {
-        method: "PUT",
-        headers: headers,
-        body: update
-      });
-      if (response.status !== 200) {
-        const body = await response.text();
-        alert(body);
-        return false;
-      }
-      return true;
-    } catch (error) {
-      alert(error);
-      return false;
-    }
-  };
-  return updateData();
-};
-
-export const addRow = async (row, tableName) => {
-  const addData = async () => {
+  const addRow = useCallback(async (row, tableName) => {
     try {
       const urlString = `${API_URL}Tables/travel/${tableName}`;
       const url = new URL(urlString);
@@ -197,8 +124,74 @@ export const addRow = async (row, tableName) => {
       alert(error);
       return false;
     }
-  };
-  return addData();
+  });
+
+  const deleteRow = useCallback(async (tableName, pks) => {
+    try {
+      const urlString = `${API_URL}Tables/travel/${tableName}${pks}`;
+      const url = new URL(urlString);
+      let response = await fetch(url, {
+        method: "DELETE",
+        headers: headers
+      });
+      if (response.status === 409) {
+        const body = await response.text();
+        alert(body);
+        return false;
+      }
+      return true;
+    } catch (error) {
+      alert(error);
+      return false;
+    }
+  });
+
+  const updateRow = useCallback(async (pks, column, value, tableName) => {
+    try {
+      const urlString = `${API_URL}Tables/travel/${tableName}${pks}`;
+      const url = new URL(urlString);
+      const update = `<${tableName} ${column}="${value}"/>`;
+      headers.set("Content-Type", "text/xml");
+      let response = await fetch(url, {
+        method: "PUT",
+        headers: headers,
+        body: update
+      });
+      if (response.status !== 200) {
+        const body = await response.text();
+        alert(body);
+        return false;
+      }
+      return true;
+    } catch (error) {
+      alert(error);
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsError(false);
+      setIsLoading(true);
+      try {
+        const urlString = `${API_URL}Tables/travel/${tableName}`;
+        const url = new URL(urlString);
+        headers.set("Accept", "application/json");
+        let response = await fetch(url, {
+          method: "GET",
+          headers: headers
+        });
+        let data = await safeParseJSON(response);
+        setTableData(data[tableName]);
+      } catch (error) {
+        setIsError(true);
+      }
+      setIsLoading(false);
+    };
+    fetchData();
+  }, [tableName, updateRow, deleteRow, addRow]);
+
+  return { data, isLoading, isError, updateRow, deleteRow, addRow };
 };
 
 const safeParseJSON = async response => {

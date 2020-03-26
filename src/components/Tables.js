@@ -5,7 +5,7 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import _ from "lodash";
 
 import "./Tables.css";
-import { useTables, deleteRow, updateRow, addRow } from "../travel-context";
+import { useTables } from "../travel-context";
 
 const disableNewlines = event => {
   const keyCode = event.keyCode || event.which;
@@ -40,8 +40,10 @@ const highlightAll = () => {
   }, 0);
 };
 
-const Tables = ({ tableName, columns, pks, updateMe, random }) => {
-  const { data, loading, error } = useTables(tableName);
+const Tables = ({ tableName, columns, pks }) => {
+  const { data, loading, error, updateRow, deleteRow, addRow } = useTables(
+    tableName
+  );
   const [newRow, setNewRow] = useState([]);
 
   const columnNames = columns.map(col => Object.keys(col)[0]);
@@ -53,10 +55,7 @@ const Tables = ({ tableName, columns, pks, updateMe, random }) => {
       buttons: [
         {
           label: "Yes",
-          onClick: () =>
-            deleteRow(tableName, pkValues).then(status => {
-              if (status) updateMe(Math.random());
-            })
+          onClick: () => deleteRow(tableName, pkValues)
         },
         {
           label: "No",
@@ -89,9 +88,7 @@ const Tables = ({ tableName, columns, pks, updateMe, random }) => {
       target: { value }
     } = event;
 
-    updateRow(row, column, value, tableName).then(status => {
-      if (!status) updateMe(Math.random());
-    });
+    updateRow(row, column, value, tableName);
   };
 
   const handleContentEditable = event => {
@@ -238,7 +235,6 @@ const Tables = ({ tableName, columns, pks, updateMe, random }) => {
           typeof data !== undefined &&
           Object.keys(data).length !== 0 && <tbody>{renderAdd()}</tbody>}
       </table>
-      <p hidden>{random}</p>
     </div>
   );
 };
