@@ -19,7 +19,7 @@
   
   )
 
-`api.json` is used for reading meta data about tables...
+`tables.json` is used for reading meta data about tables...
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
