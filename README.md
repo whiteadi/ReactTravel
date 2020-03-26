@@ -1,6 +1,6 @@
 ## USoft React client ##
 
-`pubic\react.xsl`
+`public\react.xsl`
 
  is used to generate the
 
