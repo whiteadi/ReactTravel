@@ -13,7 +13,7 @@
   
          'c:\xmltest\react.xsl',
 
-         'c:\temp\api.js',
+         'c:\temp\tables.json',
   
          'tables', usmeta.tables('.*')
   
