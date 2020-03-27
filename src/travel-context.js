@@ -94,6 +94,25 @@ export const useTables = tableName => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  const fetchData = async () => {
+    setIsError(false);
+    setIsLoading(true);
+    try {
+      const urlString = `${API_URL}Tables/travel/${tableName}`;
+      const url = new URL(urlString);
+      headers.set("Accept", "application/json");
+      let response = await fetch(url, {
+        method: "GET",
+        headers: headers
+      });
+      let data = await safeParseJSON(response);
+      setTableData(data[tableName]);
+    } catch (error) {
+      setIsError(true);
+    }
+    setIsLoading(false);
+  };
+
   const addRow = useCallback(async (row, tableName) => {
     try {
       const urlString = `${API_URL}Tables/travel/${tableName}`;
@@ -119,6 +138,7 @@ export const useTables = tableName => {
         alert(body);
         return false;
       }
+      fetchData();
       return true;
     } catch (error) {
       alert(error);
@@ -139,6 +159,7 @@ export const useTables = tableName => {
         alert(body);
         return false;
       }
+      fetchData();
       return true;
     } catch (error) {
       alert(error);
@@ -170,26 +191,8 @@ export const useTables = tableName => {
   });
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
-      try {
-        const urlString = `${API_URL}Tables/travel/${tableName}`;
-        const url = new URL(urlString);
-        headers.set("Accept", "application/json");
-        let response = await fetch(url, {
-          method: "GET",
-          headers: headers
-        });
-        let data = await safeParseJSON(response);
-        setTableData(data[tableName]);
-      } catch (error) {
-        setIsError(true);
-      }
-      setIsLoading(false);
-    };
     fetchData();
-  }, [tableName, updateRow, deleteRow, addRow]);
+  }, [tableName, fetchData]);
 
   return { data, isLoading, isError, updateRow, deleteRow, addRow };
 };
