@@ -94,7 +94,7 @@ export const useTables = tableName => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setIsError(false);
     setIsLoading(true);
     try {
@@ -111,7 +111,7 @@ export const useTables = tableName => {
       setIsError(true);
     }
     setIsLoading(false);
-  };
+  }, [tableName]);
 
   const addRow = useCallback(async (row, tableName) => {
     try {
