@@ -131,6 +131,9 @@ const Tables = ({ tableName, columns, pks }) => {
     }, "");
   };
 
+  const getType = value =>
+    Object.values(columns.find(obj => Object.keys(obj)[0] === value))[0].TYPE;
+
   const renderTableData = data => {
     const numTypes = ["NUMBER", "INTEGER"];
     return data.map((row, index) => {
@@ -147,7 +150,7 @@ const Tables = ({ tableName, columns, pks }) => {
               key={i}
               tagName="td"
               onKeyPress={
-                numTypes.includes(columns[value])
+                numTypes.includes(getType(value))
                   ? validateNumber
                   : disableNewlines
               }
@@ -189,7 +192,7 @@ const Tables = ({ tableName, columns, pks }) => {
             key={i}
             tagName="td"
             onKeyPress={
-              numTypes.includes(columns[value])
+              numTypes.includes(getType(value))
                 ? validateNumber
                 : disableNewlines
             }

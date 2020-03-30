@@ -56,6 +56,12 @@ TABLE_NAME="SOMENUMBERS" COLUMN_NAME="KEYVALUE" TABLE_MODULE="RDMI91" PRIMARY_KE
 	<xsl:value-of select="@DATATYPE"/>
 	<xsl:text>", "PK": "</xsl:text>
 	<xsl:value-of select="@PRIMARY_KEY"/>
+	<xsl:text>", "FK": "</xsl:text>
+	<xsl:value-of select="@FOREIGN_KEY"/>
+	<xsl:text>", "MANDATORY": "</xsl:text>
+	<xsl:value-of select="@MANDATORY"/>
+	<xsl:text>", "INPUT_ALLOWED": "</xsl:text>
+	<xsl:value-of select="@INPUT_ALLOWED"/>
 	<xsl:text>" &#10; }</xsl:text>
 	<xsl:if test="not(position() = last())">, &#10;</xsl:if>
 </xsl:template>

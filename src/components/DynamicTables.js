@@ -17,10 +17,17 @@ const getPks = data => {
   });
 };
 
-const getColumnsTypes = data => {
+const getColumns = data => {
   const columnNames = Object.keys(data);
   const types = columnNames.map(column => {
-    return { [column]: data[column].TYPE };
+    return {
+      [column]: {
+        TYPE: data[column].TYPE,
+        FK: data[column].FK,
+        MANDATORY: data[column].MANDATORY,
+        INPUT_ALLOWED: data[column].INPUT_ALLOWED
+      }
+    };
   });
   return types;
 };
@@ -33,7 +40,7 @@ const DynamicTables = () => {
   const change = event => {
     if (event.target.value) {
       setTableName(event.target.value);
-      setTableColumns(getColumnsTypes(jsonData[event.target.value]));
+      setTableColumns(getColumns(jsonData[event.target.value]));
       setTablePK(getPks(jsonData[event.target.value]));
     }
   };

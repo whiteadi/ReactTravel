@@ -2,355 +2,601 @@
   "DISCOUNT": {
     "DISCOUNT_ID": {
       "TYPE": "INTEGER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "PERCENTAGE": {
       "TYPE": "INTEGER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "MIN_PART": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "MAX_PART": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     }
   },
   "GUIDE": {
     "PERSON_ID": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "EXPERIENCE": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "DB_USER": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     }
   },
   "PERSON": {
     "PERSON_ID": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "FIRST_NAME": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "FAMILY_NAME": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "ADDRESS": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "CITY": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "COUNTRY": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "AREA_CODE": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "EMAIL": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "BANK_ACCOUNT": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "BIRTH_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "GENDER": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "DISCOUNT": {
       "TYPE": "INTEGER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "GUIDE": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "STAFF": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     }
   },
   "RESERVATION": {
     "RES_ID": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "TOUR_ID": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "MADE_BY": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "DEALT_WITH_BY": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "PERSON_DISCOUNT": {
       "TYPE": "INTEGER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "N"
     },
     "GROUP_DISCOUNT": {
       "TYPE": "INTEGER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "PRICE": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "N"
     },
     "BOOK_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "CANCEL_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "DESTINATION": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "FAMILY_NAME": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "RETURN_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "START_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "TOUR_TYPE": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     }
   },
   "STAFF": {
     "PERSON_ID": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "HIRE_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "COACHED_BY": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     }
   },
   "TABLE_SEQUENCE_NUMBERS": {
     "TABLE_NAME": {
       "TYPE": "VARCHAR2",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "SEQNO": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     }
   },
   "TOUR": {
     "TOUR_ID": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "DESTINATION": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "TOUR_TYPE": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "START_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "RETURN_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "PLAN_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "PRICE": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "MAX_PART": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "GUIDE": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     }
   },
   "TOUR_PROGRAMME": {
     "DESTINATION": {
       "TYPE": "VARCHAR2",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "TOUR_TYPE": {
       "TYPE": "VARCHAR2",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "NUM_DAYS": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "MAX_AGE": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "DESCRIPTION": {
       "TYPE": "CLOB",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     }
   },
   "TRAVELLER": {
     "RES_ID": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "PERSON_ID": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "INSURANCE": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "DIET": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "WITHDRAWAL_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     },
     "NAME": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "Y",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     }
   },
   "T_APP_TIME": {
     "APP_YEAR": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "APP_MONTH": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "APP_DAY": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "APP_HOUR": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "APP_MINUTE": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "APP_SECOND": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "APP_WEEKDAY": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "N"
     }
   },
   "T_EVENT": {
     "EVENT": {
       "TYPE": "VARCHAR2",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "SESSION_ID": {
       "TYPE": "VARCHAR2",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     }
   },
   "V_BOOKING_SPACE": {
     "TOUR_ID": {
       "TYPE": "NUMBER",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "DESTINATION": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "TOUR_TYPE": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "START_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "RETURN_DATE": {
       "TYPE": "DATETIME",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "N"
     },
     "MAX_PART": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "N"
     },
     "BOOKED": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "N"
     },
     "FREE": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "N"
     },
     "RES_SPACE": {
       "TYPE": "NUMBER",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "N"
     }
   },
   "XSL": {
     "NAME": {
       "TYPE": "VARCHAR2",
-      "PK": "Y"
+      "PK": "Y",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "REPOSITORY_VERSION": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "XSL": {
       "TYPE": "CLOB",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "Y",
+      "INPUT_ALLOWED": "Y"
     },
     "DESCRIPTION": {
       "TYPE": "VARCHAR2",
-      "PK": "N"
+      "PK": "N",
+      "FK": "N",
+      "MANDATORY": "N",
+      "INPUT_ALLOWED": "Y"
     }
   }
 }
