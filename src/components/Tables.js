@@ -48,6 +48,19 @@ const Tables = ({ tableName, columns, pks }) => {
 
   const columnNames = columns.map(col => Object.keys(col)[0]);
 
+  const getType = value =>
+    Object.values(columns.find(obj => Object.keys(obj)[0] === value))[0].TYPE;
+
+  const isMandatory = value =>
+    Object.values(columns.find(obj => Object.keys(obj)[0] === value))[0]
+      .MANDATORY === "Y";
+
+  const isInputAllowed = value =>
+    Object.values(columns.find(obj => Object.keys(obj)[0] === value))[0]
+      .INPUT_ALLOWED === "Y";
+
+  const mandatoryColumns = _.filter(columnNames, column => isMandatory(column));
+
   const deleteARow = pkValues => {
     confirmAlert({
       title: "Confirm to delete",
@@ -74,10 +87,25 @@ const Tables = ({ tableName, columns, pks }) => {
         .replace(/&lt;/g, "<");
     };
     const trimmedRow = newRow.map(row => {
-      return { [Object.keys(row)[0]]: trimSpaces(Object.values(row)[0]) };
+      const columnName = Object.keys(row)[0];
+      const value = trimSpaces(Object.values(row)[0]);
+      if (isInputAllowed(columnName)) {
+        return { [columnName]: value };
+      } else {
+        return null;
+      }
     });
 
-    addRow(trimmedRow, tableName);
+    const allMandatoryFields = _.filter(mandatoryColumns, column =>
+      _.isNil(_.find(newRow, row => !_.isNil(row[column])))
+    );
+
+    if (allMandatoryFields.length > 0) {
+      const columnsNull = _.join(allMandatoryFields, ", ");
+      alert(`You must provide value(s) for mandatory field(s): ${columnsNull}`);
+    } else {
+      addRow(_.compact(trimmedRow), tableName);
+    }
   };
 
   const handleContentEditableUpdate = event => {
@@ -130,9 +158,6 @@ const Tables = ({ tableName, columns, pks }) => {
       }
     }, "");
   };
-
-  const getType = value =>
-    Object.values(columns.find(obj => Object.keys(obj)[0] === value))[0].TYPE;
 
   const renderTableData = data => {
     const numTypes = ["NUMBER", "INTEGER"];
@@ -188,6 +213,7 @@ const Tables = ({ tableName, columns, pks }) => {
             }
             data-column={value}
             data-row={pkValues}
+            disabled={!isInputAllowed(value)}
             className="content-editable"
             key={i}
             tagName="td"
