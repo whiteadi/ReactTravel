@@ -141,7 +141,11 @@ const Tables = ({ tableName, columns, pks }) => {
   };
 
   const updateARow = pkValues => {
-    updateRow(pkValues, updatedRow[pkValues], tableName);
+    if (updatedRow[pkValues] && updatedRow[pkValues].length > 0) {
+      updateRow(pkValues, updatedRow[pkValues], tableName);
+    } else {
+      alert("No values changed for this row!");
+    }
   };
 
   const handleContentEditable = event => {
