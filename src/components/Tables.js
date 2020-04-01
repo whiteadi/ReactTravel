@@ -45,6 +45,7 @@ const Tables = ({ tableName, columns, pks }) => {
     tableName
   );
   const [newRow, setNewRow] = useState([]);
+  const [updatedRow, setUpdateRow] = useState({});
 
   const columnNames = columns.map(col => Object.keys(col)[0]);
 
@@ -116,7 +117,31 @@ const Tables = ({ tableName, columns, pks }) => {
       target: { value }
     } = event;
 
-    updateRow(row, column, value, tableName);
+    const existing = _.find(
+      updatedRow[row],
+      rowPair => Object.keys(rowPair)[0] === column
+    );
+
+    let tempRow = [];
+
+    if (existing) {
+      tempRow = updatedRow[row].map(pair => {
+        if (Object.keys(pair)[0] === column) {
+          return { [column]: value };
+        } else {
+          return pair;
+        }
+      });
+    } else {
+      const existingValues = updatedRow[row] || [];
+      tempRow = existingValues.concat({ [column]: value });
+    }
+
+    setUpdateRow({ [row]: tempRow });
+  };
+
+  const updateARow = pkValues => {
+    updateRow(pkValues, updatedRow[pkValues], tableName);
   };
 
   const handleContentEditable = event => {
@@ -167,7 +192,19 @@ const Tables = ({ tableName, columns, pks }) => {
         <tr key={index}>
           {columnNames.map((value, i) => (
             <ContentEditable
-              html={(row[value] || "").toString()}
+              html={
+                updatedRow[pkValues] &&
+                updatedRow[pkValues].length > 0 &&
+                _.find(updatedRow[pkValues], pair => {
+                  return Object.keys(pair)[0] === value;
+                })
+                  ? Object.values(
+                      _.find(updatedRow[pkValues], pair => {
+                        return Object.keys(pair)[0] === value;
+                      }) || { x: "" }
+                    )[0]
+                  : (row[value] || "").toString()
+              }
               data-column={value}
               data-row={pkValues}
               disabled={pks && pks.includes(value)}
@@ -184,6 +221,9 @@ const Tables = ({ tableName, columns, pks }) => {
               onChange={handleContentEditableUpdate}
             />
           ))}
+          <td>
+            <button onClick={() => updateARow(pkValues)}>Update row</button>
+          </td>
           <td>
             <button onClick={() => deleteARow(pkValues)}>Delete</button>
           </td>

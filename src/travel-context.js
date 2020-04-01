@@ -167,11 +167,19 @@ export const useTables = tableName => {
     }
   });
 
-  const updateRow = useCallback(async (pks, column, value, tableName) => {
+  const updateRow = useCallback(async (pks, row, tableName) => {
     try {
       const urlString = `${API_URL}Tables/travel/${tableName}${pks}`;
       const url = new URL(urlString);
-      const update = `<${tableName} ${column}="${value}"/>`;
+      const rowData = row.reduce((columns, pair) => {
+        return columns.concat(
+          Object.keys(pair)[0],
+          '="',
+          Object.values(pair)[0],
+          '" '
+        );
+      }, "");
+      const update = `<${tableName} ${rowData} />`;
       headers.set("Content-Type", "text/xml");
       let response = await fetch(url, {
         method: "PUT",
